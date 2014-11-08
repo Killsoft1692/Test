@@ -1,6 +1,6 @@
 <?php
 
-namespace Spolischook\Model;
+namespace Killsoft\Model;
 
 abstract class AbstractARModel
 {

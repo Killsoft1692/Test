@@ -1,5 +1,22 @@
 To be or not to be. That is the question!
 {% block content %}
     <br><h1>Wow it's realy works...</h1>
-     <p><a href="http://github.com/Killsoft1692/" target="_blank"><button class="css3button" name="button" type="button" value="Button">Official page</button></a></p>
+     
+
+<style>
+css3button
+ {
+  color: #fff; /* цвет текста */
+  background: navy;
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: rgb(45,75,56); /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  outline: none; /* убирать контур в Mozilla */
+}
+css3button:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
+css3button:active { background: rgb(152,15,0); } /* при нажатии */
+</style>
+
+<p><a href="http://github.com/Killsoft1692/" target="_blank"><button class="css3button" name="button" type="button" value="Button">Official page</button></a></p>
 {% endblock %}
