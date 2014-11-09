@@ -10,7 +10,7 @@
 
             <testsuites>
         <testsuite name="Project Test Suite">
-                <directory>src/Killsoft/Tests</directory> <!--../ -->
+                <directory>../src/Killsoft/Tests</directory> <!--../ -->
             </testsuite>
     </testsuites>
 
