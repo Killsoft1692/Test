@@ -1,0 +1,11 @@
+{
+    "require": {
+      "symfony/http-foundation": "2.6.*@dev",
+      "phroute/phroute": "1.*",
+      "twig/twig": "1.16.*@dev",
+      "phpunit/phpunit": "4.3.*"
+    },
+    "autoload": {
+     "psr-0": {"Killsoft": "src/"}
+    }
+}
