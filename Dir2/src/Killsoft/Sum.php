@@ -1,6 +1,6 @@
 <?php
 
-namespace Killsoft\Service;
+namespace Killsoft;
 
 class Sum
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Killsoft\Tests\Service;
+namespace Killsoft\Test;
 
-use Killsoft\Service\Sum;
+use Killsoft\Sum;
 
 class SumTest extends \PHPUnit_Framework_TestCase
 {
