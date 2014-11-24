@@ -10,9 +10,6 @@ class DefaultController extends Controller
 {
     public function createAction()
     {
-        /**
-         * @Route("/doctrine")
-         */
         $product = new Product();
         $product->setName('Bread');
         $product->setPrice('1');
@@ -21,6 +18,6 @@ class DefaultController extends Controller
         $em->persist($product);
         $em->flush();
         //  return new Response('Created product '.$product->getName());
-        return $this->render('AcmeStoreBundle:Default:index.html.twig');
+        return $this->render('AcmeStoreBundle:Default:index.html.twig',array("create"=>$product->getCreated()));
     }
 }

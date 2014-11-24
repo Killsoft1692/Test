@@ -9,11 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Product
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="product")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
@@ -29,6 +30,8 @@ class Product
      * @ORM\Column(type="string", length=100)
      */
     protected $name;
+
+    protected $created;
     /**
      * @ORM\Column(type="decimal", scale=2)
      */
@@ -100,7 +103,7 @@ class Product
      * @param string $description
      * @return Product
      */
-    public function setDescription($description)
+   public function setDescription($description)
     {
         $this->description = $description;
 
@@ -123,7 +126,7 @@ class Product
      * @param \Acme\StoreBundle\Entity\Category $category
      * @return Product
      */
-    public function setCategory(\Acme\StoreBundle\Entity\Category $category = null)
+    public function setCategory(\Acme\StoreBundle\Entity\Category $category )
     {
         $this->category = $category;
 
@@ -138,5 +141,12 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+    /**
+     * ORM\prePersist
+     */
+    public function setCreatedValue()
+    {
+
     }
 }

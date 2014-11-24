@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Category
 {
@@ -22,6 +23,8 @@ class Category
      *
      */
     private $id;
+
+    protected $created;
    
     /**
      * Get id
@@ -32,7 +35,7 @@ class Category
     {
         return $this->id;
     }
-    /**
+   /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="Category")
      */
     protected $products;
@@ -80,10 +83,18 @@ class Category
     /**
      * Get products
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProducts()
     {
-        return $this->products;
+         return $this->products;
+    }
+
+    /**
+     * ORM\prePersist
+     */
+    public function setCreatedValue()
+    {
+
     }
 }

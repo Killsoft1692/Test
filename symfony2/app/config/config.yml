@@ -62,6 +62,14 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        mappings:
+                    translatable:
+                        type: annotation
+                        alias: Gedmo
+                        prefix: GedmoTranslatableEntity
+                        # make sure vendor library location is correct
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -70,3 +78,18 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+hautelook_alice:
+    locale: en_US   # default
+    seed: 1         # default
+
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true
+

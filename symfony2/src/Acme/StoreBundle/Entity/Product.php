@@ -3,17 +3,20 @@
 namespace Acme\StoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Product
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
+ * @ORM\HasLifecycleCallbacks
  */
 class Product
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="product")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
@@ -29,6 +32,13 @@ class Product
      * @ORM\Column(type="string", length=100)
      */
     protected $name;
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+
+    protected $created;
     /**
      * @ORM\Column(type="decimal", scale=2)
      */
@@ -123,7 +133,7 @@ class Product
      * @param \Acme\StoreBundle\Entity\Category $category
      * @return Product
      */
-    public function setCategory(\Acme\StoreBundle\Entity\Category $category = null)
+    public function setCategory(\Acme\StoreBundle\Entity\Category $category )
     {
         $this->category = $category;
 
@@ -139,4 +149,22 @@ class Product
     {
         return $this->category;
     }
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedValue()
+    {
+        $this->created = new \DateTime();
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
 }
